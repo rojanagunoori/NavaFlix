@@ -1,11 +1,37 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   images: {
-    // TMDB poster base domain
-    domains: ['image.tmdb.org'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "imgur.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "arc.io",
+        pathname: "/**",
+      },
+    ],
   },
+
+  env: {
+    API_KEY: process.env.API_KEY,
+    TMDB_ACCESS_TOKEN: process.env.TMDB_ACCESS_TOKEN,
+  },
+
+  // Required for Next.js 16 if webpack config is removed
+  turbopack: {},
 };
 
 module.exports = nextConfig;
