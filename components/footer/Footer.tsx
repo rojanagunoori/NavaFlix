@@ -54,7 +54,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex flex-col items-center md:items-end">
             <Link
-              href="https://github.com/alanvarghesepaul22/CINEWORLD-NextJS"
+              href="https://github.com/rojanagunoori/streaming-dashboard"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
