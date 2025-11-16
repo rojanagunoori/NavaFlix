@@ -1,5 +1,3 @@
- 🎬 NavaFlix
-
 # 🎬 NavaFlix
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT) 
