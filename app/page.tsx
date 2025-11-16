@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 export default async function HomePage() {
 
   return (
-    <div className="app-bg-enhanced mt-16">
+    <div className="app-bg-enhanced mt-16"
+    >
       <Hero />
       <div className="relative z-10 pt-8">
         <div className="container mx-auto px-4">

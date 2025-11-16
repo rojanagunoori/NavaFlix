@@ -21,6 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={cn(inter.className, "app-bg-enhanced")}>
+        
         <Header />
         {children}
         <Footer />

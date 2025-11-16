@@ -19,9 +19,10 @@ const PageNotFound = () => {
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             href="/movie"
-            //className="px-6 py-1 border border-gray-600 text-white font-medium rounded-lg bg-gray-400/20 hover:bg-gray-600/20 transition-colors"
+            className="px-6 py-1 border border-gray-600 text-white font-medium rounded-lg bg-gray-400/20 hover:bg-gray-600/20 transition-colors"
           >
-           <a className="px-6 py-1 border border-gray-600 text-white font-medium rounded-lg bg-gray-400/20 hover:bg-gray-600/20 transition-colors">Go Home</a> 
+           {/*<a className="px-6 py-1 border border-gray-600 text-white font-medium rounded-lg bg-gray-400/20 hover:bg-gray-600/20 transition-colors">Go Home</a> */}
+          Go Home
           </Link>
         </div>
       </div>

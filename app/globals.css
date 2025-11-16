@@ -1,5 +1,6 @@
-@import "tailwindcss";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -57,7 +58,13 @@
     --chart-5: 340 75% 55%;
   }
 
-
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @layer utilities {
@@ -128,18 +135,9 @@
     @apply text-sm font-medium text-gray-300 whitespace-nowrap;
   }
   
- .footer-link {
-  color: theme("colors.gray.300"); /* Tailwind CSS function */
-  font-size: theme("fontSize.sm");
-  transition: all 0.2s;
-  position: relative;
-}
-
-.footer-link:hover {
-  color: hsl(var(--primary)); /* use your CSS variable here */
-  transform: scale(1.05);
-}
-
+  .footer-link {
+    @apply text-gray-300 hover:text-primary text-sm transition-all duration-200 hover:scale-105 relative;
+  }
   
   .smooth-transition {
     @apply transition-all duration-200;

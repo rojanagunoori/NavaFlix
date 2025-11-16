@@ -22,6 +22,7 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 function checkAccessToken() {
   const ACCESS_TOKEN = getAccessToken();
+
   const API_KEY = getApiKey();
 
   if (!ACCESS_TOKEN && !API_KEY) {
@@ -90,15 +91,19 @@ export async function fetchAPI<T = unknown>(
       if (typeof window === 'undefined') {
         fetchOptions.next = { revalidate: 1800 }; // 30 minutes revalidation for server-side calls
       }
-
+console.log("requestUrl, fetchOptions ",requestUrl, fetchOptions)
       const response = await fetch(requestUrl, fetchOptions);
-      
+      console.log("Response ",response)
+
       if (!response.ok) {
+                 console.log("Response.ok ",response.ok)
         const errorText = await response.text().catch(() => 'Unknown error');
+        console.log("errorText ",errorText)
         const error = new Error(`HTTP ${response.status} ${response.statusText}: ${errorText}`) as Error & { 
           status: number;
           code: string;
         };
+         console.log("error ",error)
         error.status = response.status;
         
         // Set appropriate error codes
@@ -124,9 +129,10 @@ export async function fetchAPI<T = unknown>(
         
         throw error;
       }
-      
+       console.log("response  ",response)
       return response.json();
     } catch (error) {
+  
       const error_ = error as Error & { code?: string; status?: number };
       
       // Handle network errors (fetch failed, timeout, etc.)
@@ -150,6 +156,7 @@ export async function fetchAPI<T = unknown>(
 
   try {
     const response = await requestPromise;
+   
     return response;
   } finally {
     // Clean up the pending request after a short delay to allow deduplication
