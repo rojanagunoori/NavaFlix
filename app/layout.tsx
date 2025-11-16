@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "CineWorld",
+  title: "NavaFlix",
   description: "A World of Cinema",
 };
 
