@@ -8,10 +8,10 @@ const Logo = () => {
       className="flex justify-center items-center w-28 md:w-32 text-sm md:text-base my-5 font-extrabold text-center"
     >
       <div className="bg-primary py-1 px-2 border border-primary ">
-        <p>CINE</p>
+        <p>NAVA</p>
       </div>
       <div className="border border-primary py-1 text-primary px-2 ">
-        <p>WORLD</p>
+        <p>FLIX</p>
       </div>
       {/*<div className="bg-[#fde402] text-black py-1 px-2 border border-[#fde402]">
   <p>CINE</p>

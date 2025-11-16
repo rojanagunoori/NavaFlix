@@ -47,7 +47,7 @@ const Footer = () => {
                 className="h-4 w-4 text-red-500 fill-current animate-pulse"
                 aria-hidden="true"
               />
-              <span>© {new Date().getFullYear()} Cineworld</span>
+              <span>© {new Date().getFullYear()} NavaFlix</span>
             </div>
           </div>
 
