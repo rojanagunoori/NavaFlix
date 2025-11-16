@@ -56,7 +56,7 @@ This project uses **Next.js App Router**, **TailwindCSS**, **ShadCN UI**, and **
 - 📱 Fully **responsive and mobile-first**  
 - 🧩 **Custom pagination** with ellipsis for large lists  
 - 💡 Optional **AI summaries** (via Gemini API) for enhanced content descriptions  
-- 🎨 Dark & light theme support  
+
 
 ---
 
@@ -69,6 +69,205 @@ This project uses **Next.js App Router**, **TailwindCSS**, **ShadCN UI**, and **
 - **API:** TMDB REST API, Gemini API  
 - **State Management:** Local state and watchlist hooks  
 - **Deployment:** Vercel  
+
+---
+
+## ⚠️ Challenges Faced During Development
+
+During the development of **NavaFlix**, several technical and design challenges were encountered. Below is a detailed breakdown:
+
+---
+
+### 1. 📊 Managing Multiple APIs
+- **Problem:** Integrating TMDB API for movies/TV shows alongside Gemini API for AI-generated content required careful handling of API limits, authentication, and error handling.  
+- **Impact:** Ensuring consistent data structure across different endpoints (movies vs TV shows) was tricky and could break components.  
+- **Solution:** Implemented modular API service functions, error handling, and caching where needed to maintain smooth performance.  
+
+---
+
+### 2. 🔌 TMDB API Rate Limits and Data Handling
+- **Problem:** TMDB enforces strict API rate limits. Multiple calls for trending, popular, top-rated, and detail pages could exceed limits.  
+- **Impact:** Frequent calls could cause blocked requests or delayed responses.  
+- **Solution:** Implemented caching with custom hooks (`useWatchlist`, `useResume`) and conditional fetching logic.  
+
+---
+
+### 3. 🎛️ State Management
+- **Problem:** Features like watchlist required syncing between local state, `localStorage`, and dynamic components.  
+- **Impact:** Incorrect updates could lead to inconsistent UI or require page reloads.  
+- **Solution:** Built `useWatchlist` hook with proper synchronization. Components like `WatchlistButton` reflect real-time changes.  
+
+---
+
+### 4. ⏭️ Episode & Season Navigation
+- **Problem:** Navigating TV series with variable seasons and episodes was complex.  
+- **Impact:** Users could encounter broken navigation, missing episodes, or incomplete season data.  
+- **Solution:** Created reusable components like `EpisodeNavigation`, `NextEpisode`, `SeasonDisplay`, and `EpisodeCard` to ensure seamless navigation.  
+
+---
+
+### 5. 🔍 Search Performance Optimization
+- **Problem:** Real-time search for movies, TV shows, and actors could overwhelm the API.  
+- **Impact:** Slow or unresponsive search experience.  
+- **Solution:** Implemented input debouncing and incremental rendering in `SearchDisplay`.  
+
+---
+
+### 6. 💡 AI Integration
+- **Problem:** Fetching AI-powered summaries from Gemini API introduces latency.  
+- **Impact:** Users could see empty or broken UI if AI data fails or is slow.  
+- **Solution:** Used `useAIFacts` and `AISuggestionModal` with loading placeholders and error handling.  
+
+---
+
+### 7. 🖼️ Media Poster & Aspect Ratio Handling
+- **Problem:** TMDB images have varying sizes and aspect ratios.  
+- **Impact:** Could break grids or crop images inconsistently.  
+- **Solution:** Designed `MediaPoster`, `MediaCard`, and `ResponsiveGrid` components to maintain proper scaling and responsive layouts.  
+
+---
+
+### 8. ⚡ Performance & Loading
+- **Problem:** Movie/TV pages require multiple API calls and large images.  
+- **Impact:** Slower page loads, flickering, or blank screens.  
+- **Solution:** Implemented lazy loading for images, optimized API calls, and used loading indicators like `PageLoading` and `EpisodeLoading`.  
+
+---
+
+### 9. 🎨 UI/UX Design
+- **Problem:** Designing a mobile-first streaming layout with hero sections, watchlist overlays, and dynamic grids was challenging.  
+- **Impact:** Maintaining proper scaling for posters, cards, and metadata on different screen sizes required meticulous CSS work.  
+- **Solution:** TailwindCSS responsive classes and reusable components like `MediaCard`, `Pagination`, and `Dialog`.  
+
+---
+
+### 10. Custom Pagination Logic
+- **Problem:** Handling large datasets like trending movies or top-rated lists.  
+- **Impact:** Users could get lost in long lists.  
+- **Solution:** `GenericPagination` and `PaginationWrapper` components with ellipsis, previous/next buttons, and active page highlighting.  
+
+---
+
+### 11. SEO & Metadata Management
+- **Problem:** Each movie/TV page needed unique titles, descriptions, and OG metadata.  
+- **Impact:** Poor SEO ranking and incorrect social sharing previews.  
+- **Solution:** Dynamic metadata generated using TMDB API in `MediaMeta` and `layout.tsx`.  
+
+---
+
+### 12. 📱 Responsive Design
+- **Problem:** Complex streaming layout needed to be fully responsive.  
+- **Impact:** Grids, hero sections, and watchlist overlays could break on smaller devices.  
+- **Solution:** Mobile-first design, TailwindCSS responsive utilities, and testing on multiple screen sizes.  
+
+---
+
+### 13. Cross-Browser Compatibility
+- **Problem:** Components rendered differently across browsers.  
+- **Impact:** Broken layouts, misaligned grids, and inconsistent fonts.  
+- **Solution:** Extensive testing and minor CSS adjustments for Chrome, Firefox, Safari, and mobile browsers.  
+
+---
+
+### 14. Accessibility (a11y)
+- **Problem:** Buttons, dialogs, and pagination needed keyboard and screen reader support.  
+- **Impact:** Accessibility violations could prevent users with disabilities from using the app.  
+- **Solution:** Used Radix UI primitives with proper ARIA attributes and focus management.  
+
+---
+
+### 15. Environment & API Key Management
+- **Problem:** API keys for TMDB and Gemini needed to remain secure.  
+- **Impact:** Exposing keys in frontend could allow unauthorized access.  
+- **Solution:** Used `.env.local` for server-side secrets and `NEXT_PUBLIC_` for client-side keys.  
+
+---
+
+### 16. Deployment Challenges
+- **Problem:** Deploying Next.js App Router project with dynamic routes on Vercel.  
+- **Impact:** Incorrect builds could break routing or dynamic pages.  
+- **Solution:** Configured environment variables correctly and tested builds before deployment.  
+
+---
+
+### 17. 🌗 Dark & Light Mode (Optional)
+- **Problem:** Planning for themes required global state and consistent styling.  
+- **Impact:** Not implemented yet; UI remains in default theme.  
+- **Solution:** Can be added later using TailwindCSS dark mode configuration.  
+
+---
+
+💡 **Tip:** Documenting challenges helps future contributors understand technical decisions and potential pitfalls.
+
+---
+
+## 🌟 Future Improvements
+
+While **NavaFlix** is fully functional, several enhancements are planned to improve user experience, performance, and feature richness:
+
+---
+
+### 1. 🌗 Dark & Light Mode
+- **Goal:** Implement full theme toggling between dark and light modes.  
+- **Benefit:** Enhances accessibility and user comfort for different lighting conditions.  
+- **Implementation:** Use TailwindCSS dark mode configuration and store theme preference in localStorage or context.  
+
+---
+
+### 2. ⚡ Advanced AI Features
+- **Goal:** Expand Gemini API integration to provide:  
+  - Personalized movie/TV recommendations  
+  - AI-generated reviews or summaries  
+  - Trivia and fun facts per movie or episode  
+- **Benefit:** Makes the platform smarter and more interactive.  
+
+---
+
+### 3. 📈 Improved Performance & Caching
+- **Goal:** Implement server-side caching for frequently accessed API endpoints.  
+- **Benefit:** Reduces API calls, improves page load speed, and avoids TMDB/Gemini rate limits.  
+
+---
+
+### 4. 🎥 Video Previews & Trailers
+- **Goal:** Embed video trailers or previews for movies and TV shows.  
+- **Benefit:** Provides richer media experience and helps users decide what to watch.  
+
+---
+
+### 5. 🏷️ Enhanced Search & Filtering
+- **Goal:** Add multi-criteria filters: genre, year, rating, language, etc.  
+- **Benefit:** Improves content discoverability and user satisfaction.  
+
+---
+
+### 6. 🔗 User Authentication & Profiles
+- **Goal:** Add user login via OAuth or custom authentication.  
+- **Benefit:** Allows saving watchlists in the cloud, tracking watched content, and personalized recommendations.  
+
+---
+
+### 7. 🌐 Multi-Language Support
+- **Goal:** Internationalize the platform for multiple languages.  
+- **Benefit:** Expands audience reach globally.  
+
+---
+
+### 8. 📊 Analytics & Insights
+- **Goal:** Track trending content, user engagement, and AI suggestion interactions.  
+- **Benefit:** Helps optimize UI/UX and content strategy.  
+
+---
+
+### 9. 🛠️ Progressive Web App (PWA)
+- **Goal:** Make NavaFlix installable as a PWA for offline access and mobile experience.  
+- **Benefit:** Users can watch content and manage watchlists without relying entirely on the browser.  
+
+---
+
+### 10. 💡 Accessibility Enhancements
+- **Goal:** Improve keyboard navigation, screen reader support, and color contrast.  
+- **Benefit:** Makes NavaFlix fully accessible to all users.  
 
 ---
 
@@ -384,6 +583,14 @@ export const generateSummary = async ({ prompt, maxTokens = 150 }: { prompt: str
 4. Push to branch: `git push origin feature/YourFeature`
 
 5. Create a Pull Request
+
+## 🙏 Acknowledgements
+- [TMDB API](https://www.themoviedb.org/) for movie & TV data
+- [Next.js](https://nextjs.org/) for the React framework
+- [TailwindCSS](https://tailwindcss.com/) for styling
+- [ShadCN UI](https://ui.shadcn.com/) for UI components
+- [Gemini API](https://example.com) for AI summaries
+
 
 ## 📄 License
 This project is licensed under the MIT License.
