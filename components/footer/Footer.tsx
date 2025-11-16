@@ -54,7 +54,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex flex-col items-center md:items-end">
             <Link
-              href="https://github.com/rojanagunoori/streaming-dashboard"
+              href="https://github.com/rojanagunoori/NavaFlix"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
