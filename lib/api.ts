@@ -91,19 +91,19 @@ export async function fetchAPI<T = unknown>(
       if (typeof window === 'undefined') {
         fetchOptions.next = { revalidate: 1800 }; // 30 minutes revalidation for server-side calls
       }
-console.log("requestUrl, fetchOptions ",requestUrl, fetchOptions)
+//console.log("requestUrl, fetchOptions ",requestUrl, fetchOptions)
       const response = await fetch(requestUrl, fetchOptions);
-      console.log("Response ",response)
+      //console.log("Response ",response)
 
       if (!response.ok) {
-                 console.log("Response.ok ",response.ok)
+                // console.log("Response.ok ",response.ok)
         const errorText = await response.text().catch(() => 'Unknown error');
-        console.log("errorText ",errorText)
+        //console.log("errorText ",errorText)
         const error = new Error(`HTTP ${response.status} ${response.statusText}: ${errorText}`) as Error & { 
           status: number;
           code: string;
         };
-         console.log("error ",error)
+         //console.log("error ",error)
         error.status = response.status;
         
         // Set appropriate error codes
