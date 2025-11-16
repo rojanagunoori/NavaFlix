@@ -4,7 +4,7 @@ import SeasonNotFound from "@/components/not-found/SeasonNotFound";
 import SeasonInfo from "@/components/series/SeasonInfo";
 
 export const metadata: Metadata = {
-  title: "Season Details | Cineworld",
+  title: "Season Details | NavaFlix",
   description:
     "View detailed information about TV show seasons including episodes, cast, and ratings.",
 };

@@ -5,9 +5,9 @@ import SeriesPageClient from "@/components/series/SeriesPageClient";
 import {PageLoading} from "@/components/loading/PageLoading";
 
 export const metadata: Metadata = {
-  title: "All TV Shows | Cineworld",
+  title: "All TV Shows | NavaFlix",
   description:
-    "Browse all TV shows available on Cineworld. Find trending, top-rated, and new releases.",
+    "Browse all TV shows available on NavaFlix. Find trending, top-rated, and new releases.",
 };
 
 export default function SeriesPage() {
